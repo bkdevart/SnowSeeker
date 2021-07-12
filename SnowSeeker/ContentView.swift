@@ -10,8 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            Text("Hello, world!")
-                .navigationTitle("Primary")
+            NavigationLink(destination: Text("New secondary")) {
+                Text("Hello, world!")
+            }
+            .navigationTitle("Primary")
             
             Text("Secondary")
         }
