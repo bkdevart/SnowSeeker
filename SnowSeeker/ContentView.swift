@@ -13,14 +13,16 @@ struct User: Identifiable {
 
 struct ContentView: View {
     @State private var selectedUser: User? = nil
+    @State private var isShowingAlert = false
     
     var body: some View {
         Text("Hello, world!")
             .onTapGesture {
                 self.selectedUser = User()
+                self.isShowingAlert = true
             }
-            .alert(item: $selectedUser) { user in
-                Alert(title: Text(user.id))
+            .alert(isPresented: $isShowingAlert) {
+                Alert(title: Text(selectedUser!.id))
             }
     }
 }
