@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA51C7C6269E742D00F66558 /* resorts.json in Resources */ = {isa = PBXBuildFile; fileRef = CA51C7C5269E742D00F66558 /* resorts.json */; };
 		CADDF32E269B713E0023C1FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF32D269B713E0023C1FB /* AppDelegate.swift */; };
 		CADDF330269B713E0023C1FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF32F269B713E0023C1FB /* SceneDelegate.swift */; };
 		CADDF332269B713E0023C1FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF331269B713E0023C1FB /* ContentView.swift */; };
@@ -14,9 +15,12 @@
 		CADDF337269B713F0023C1FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CADDF336269B713F0023C1FB /* Assets.xcassets */; };
 		CADDF33A269B713F0023C1FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CADDF339269B713F0023C1FB /* Preview Assets.xcassets */; };
 		CADDF33D269B713F0023C1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CADDF33B269B713F0023C1FB /* LaunchScreen.storyboard */; };
+		CADDF347269E1E2E0023C1FB /* Resort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF346269E1E2E0023C1FB /* Resort.swift */; };
+		CADDF349269E1FC30023C1FB /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF348269E1FC30023C1FB /* Bundle-Decodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA51C7C5269E742D00F66558 /* resorts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = resorts.json; sourceTree = "<group>"; };
 		CADDF32A269B713E0023C1FB /* SnowSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADDF32D269B713E0023C1FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CADDF32F269B713E0023C1FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		CADDF339269B713F0023C1FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CADDF33C269B713F0023C1FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CADDF33E269B713F0023C1FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CADDF346269E1E2E0023C1FB /* Resort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resort.swift; sourceTree = "<group>"; };
+		CADDF348269E1FC30023C1FB /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				CADDF32D269B713E0023C1FB /* AppDelegate.swift */,
 				CADDF32F269B713E0023C1FB /* SceneDelegate.swift */,
 				CADDF331269B713E0023C1FB /* ContentView.swift */,
+				CADDF346269E1E2E0023C1FB /* Resort.swift */,
+				CA51C7C5269E742D00F66558 /* resorts.json */,
+				CADDF348269E1FC30023C1FB /* Bundle-Decodable.swift */,
 				CADDF336269B713F0023C1FB /* Assets.xcassets */,
 				CADDF33B269B713F0023C1FB /* LaunchScreen.storyboard */,
 				CADDF33E269B713F0023C1FB /* Info.plist */,
@@ -137,6 +146,7 @@
 			files = (
 				CADDF33D269B713F0023C1FB /* LaunchScreen.storyboard in Resources */,
 				CADDF33A269B713F0023C1FB /* Preview Assets.xcassets in Resources */,
+				CA51C7C6269E742D00F66558 /* resorts.json in Resources */,
 				CADDF337269B713F0023C1FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,10 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADDF347269E1E2E0023C1FB /* Resort.swift in Sources */,
 				CADDF32E269B713E0023C1FB /* AppDelegate.swift in Sources */,
 				CADDF335269B713E0023C1FB /* SnowSeeker.xcdatamodeld in Sources */,
 				CADDF330269B713E0023C1FB /* SceneDelegate.swift in Sources */,
 				CADDF332269B713E0023C1FB /* ContentView.swift in Sources */,
+				CADDF349269E1FC30023C1FB /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
