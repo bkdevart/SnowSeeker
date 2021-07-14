@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA51C7C6269E742D00F66558 /* resorts.json in Resources */ = {isa = PBXBuildFile; fileRef = CA51C7C5269E742D00F66558 /* resorts.json */; };
+		CA51C7C8269E788400F66558 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51C7C7269E788400F66558 /* WelcomeView.swift */; };
 		CADDF32E269B713E0023C1FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF32D269B713E0023C1FB /* AppDelegate.swift */; };
 		CADDF330269B713E0023C1FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF32F269B713E0023C1FB /* SceneDelegate.swift */; };
 		CADDF332269B713E0023C1FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDF331269B713E0023C1FB /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		CA51C7C5269E742D00F66558 /* resorts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = resorts.json; sourceTree = "<group>"; };
+		CA51C7C7269E788400F66558 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CADDF32A269B713E0023C1FB /* SnowSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADDF32D269B713E0023C1FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CADDF32F269B713E0023C1FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				CADDF32D269B713E0023C1FB /* AppDelegate.swift */,
 				CADDF32F269B713E0023C1FB /* SceneDelegate.swift */,
 				CADDF331269B713E0023C1FB /* ContentView.swift */,
+				CA51C7C7269E788400F66558 /* WelcomeView.swift */,
 				CADDF346269E1E2E0023C1FB /* Resort.swift */,
 				CA51C7C5269E742D00F66558 /* resorts.json */,
 				CADDF348269E1FC30023C1FB /* Bundle-Decodable.swift */,
@@ -164,6 +167,7 @@
 				CADDF330269B713E0023C1FB /* SceneDelegate.swift in Sources */,
 				CADDF332269B713E0023C1FB /* ContentView.swift in Sources */,
 				CADDF349269E1FC30023C1FB /* Bundle-Decodable.swift in Sources */,
+				CA51C7C8269E788400F66558 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

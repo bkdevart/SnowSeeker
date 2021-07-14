@@ -33,6 +33,19 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Resorts")
+            
+            WelcomeView()
+        }
+//        .phoneOnlyStackNavigationView()  // optional way of overriding default display behavior in phones
+    }
+}
+
+extension View {
+    func phoneOnlyStackNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        } else {
+            return AnyView(self)
         }
     }
 }
