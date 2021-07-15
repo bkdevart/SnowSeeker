@@ -17,9 +17,16 @@ struct ResortView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Image(decorative: resort.id)
-                    .resizable()
-                    .scaledToFit()
+                // Add a photo credit over the ResortView image. The data is already loaded from the JSON for this purpose, so you just need to make it look good in the UI.
+                
+                ZStack {
+                    Image(decorative: resort.id)
+                        .resizable()
+                        .scaledToFit()
+                    Text("Image credit: \(resort.imageCredit)")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
                 
                 Group {
                     HStack {
