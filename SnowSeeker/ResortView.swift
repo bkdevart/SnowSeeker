@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResortView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
-    @State private var selectedFacility:  String?
+    @State private var selectedFacility:  Facility?
     
     let resort: Resort
     
@@ -48,8 +48,8 @@ struct ResortView: View {
                         .font(.headline)
                     
                     HStack {
-                        ForEach(resort.facilities) {facility in
-                            Facility.icon(for: facility)
+                        ForEach(resort.facilityTypes) { facility in
+                            facility.icon
                                 .font(.title)
                                 .onTapGesture {
                                     self.selectedFacility = facility
@@ -63,14 +63,14 @@ struct ResortView: View {
         }
         .navigationBarTitle(Text("\(resort.name), \(resort.country)"), displayMode: .inline)
         .alert(item: $selectedFacility) {facility in
-            Facility.alert(for: facility)
+            facility.alert
         }
     }
 }
 
-extension String: Identifiable {
-    public var id: String { self }
-}
+//extension String: Identifiable {
+//    public var id: String { self }
+//}
 
 struct ResortView_Previews: PreviewProvider {
     static var previews: some View {
