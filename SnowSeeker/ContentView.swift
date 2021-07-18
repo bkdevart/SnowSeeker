@@ -7,13 +7,56 @@
 
 import SwiftUI
 
+// For a real challenge, let the user sort and filter the resorts in ContentView. For sorting use default, alphabetical, and country, and for filtering let them select country, size, or price.
+
 struct ContentView: View {
     @ObservedObject var favorites = Favorites()
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    @State private var sortName = false
+    @State private var selectedCountry = "France"
+    @State private var selectedSize = 1
+    @State private var selectedPrice = 1
+    @State private var showingOptions = false
+    
+    let filter: FilterType
+    
+    enum FilterType {
+        case country, size, price
+    }
+    
+    var filteredResorts: [Resort] {
+        switch filter {
+        case .country:
+            if sortName {
+                return resorts.sorted()
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.id > rhs.id
+                }.filter { $0.country == selectedCountry }
+            }
+        case .size:
+            if sortName {
+//                return resorts.sorted().filter { $0.isContacted }
+                return resorts.sorted()
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.id > rhs.id
+                }.filter { $0.size == selectedSize }
+            }
+        case .price:
+            if sortName {
+                return resorts.sorted()
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.id > rhs.id
+                }.filter { $0.price == selectedPrice }
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(filteredResorts) { resort in
                 NavigationLink(destination: ResortView(resort: resort)) {
                     Image(resort.country)
                         .resizable()
@@ -42,6 +85,14 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Resorts")
+            .navigationBarItems(trailing: Button(action: {
+                showingOptions = true
+            }) {
+                Text("View Options")
+            })
+            .sheet(isPresented: $showingOptions) {
+                OptionsView(selectedCountry: $selectedCountry, selectedSize: $selectedSize, selectedPrice: $selectedPrice)
+            }
             
             WelcomeView()
         }
@@ -62,6 +113,6 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(filter: .country)
     }
 }

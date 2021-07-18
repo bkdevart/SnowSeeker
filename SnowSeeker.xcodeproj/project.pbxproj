@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA3D569626A4CF18004FFBCC /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D569526A4CF18004FFBCC /* OptionsView.swift */; };
 		CA51C7C6269E742D00F66558 /* resorts.json in Resources */ = {isa = PBXBuildFile; fileRef = CA51C7C5269E742D00F66558 /* resorts.json */; };
 		CA51C7C8269E788400F66558 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51C7C7269E788400F66558 /* WelcomeView.swift */; };
 		CA51C7CA269E7B2A00F66558 /* ResortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51C7C9269E7B2A00F66558 /* ResortView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA3D569526A4CF18004FFBCC /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		CA51C7C5269E742D00F66558 /* resorts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = resorts.json; sourceTree = "<group>"; };
 		CA51C7C7269E788400F66558 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CA51C7C9269E7B2A00F66558 /* ResortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		CADDF32C269B713E0023C1FB /* SnowSeeker */ = {
 			isa = PBXGroup;
 			children = (
+				CA3D569526A4CF18004FFBCC /* OptionsView.swift */,
 				CADDF32D269B713E0023C1FB /* AppDelegate.swift */,
 				CADDF32F269B713E0023C1FB /* SceneDelegate.swift */,
 				CADDF331269B713E0023C1FB /* ContentView.swift */,
@@ -184,6 +187,7 @@
 				CADDF330269B713E0023C1FB /* SceneDelegate.swift in Sources */,
 				CA51C7CC269E7D0B00F66558 /* SkiDetailsView.swift in Sources */,
 				CADDF332269B713E0023C1FB /* ContentView.swift in Sources */,
+				CA3D569626A4CF18004FFBCC /* OptionsView.swift in Sources */,
 				CA51C7CA269E7B2A00F66558 /* ResortView.swift in Sources */,
 				CAD79DE8269FC14800165C46 /* Favorites.swift in Sources */,
 				CADDF349269E1FC30023C1FB /* Bundle-Decodable.swift in Sources */,
