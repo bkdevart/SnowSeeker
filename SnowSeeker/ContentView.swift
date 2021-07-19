@@ -14,8 +14,8 @@ struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     @State private var sortName = false
     @State private var selectedCountry = "France"
-    @State private var selectedSize = 1
-    @State private var selectedPrice = 1
+    @State private var selectedSize = 3
+    @State private var selectedPrice = 2
     @State private var showingOptions = false
     
     let filter: FilterType
@@ -32,7 +32,11 @@ struct ContentView: View {
             } else {
                 return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
                     return lhs.id > rhs.id
-                }.filter { $0.country == selectedCountry }
+                }.filter {
+                    $0.country == selectedCountry &&
+                    $0.size == selectedSize &&
+                    $0.price == selectedPrice
+                }
             }
         case .size:
             if sortName {

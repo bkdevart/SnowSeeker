@@ -28,14 +28,6 @@ struct Resort: Codable, Identifiable, Comparable {
         facilities.map(Facility.init)
     }
     
-    var allCountries: [String] {
-        var countries = [String]()
-        for resort in Resort.allResorts {
-            countries.append(resort.country)
-        }
-        return Array(Set(countries))
-    }
-    
     static let allResorts: [Resort] = Bundle.main.decode("resorts.json")
     static let example = allResorts[0]
     

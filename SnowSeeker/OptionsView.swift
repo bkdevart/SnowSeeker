@@ -7,23 +7,108 @@
 
 import SwiftUI
 
+extension String: Identifiable {
+    public var id: String { self }
+}
+
 struct OptionsView: View {
     @Binding var selectedCountry: String
     @Binding var selectedSize: Int
     @Binding var selectedPrice: Int
     
+    @State var selectedFilter: FilterType = .country
+    enum FilterType {
+        case country, size, price
+    }
+    
+    let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    var allCountries: [String] {
+        var countries = [String]()
+        for resort in Resort.allResorts {
+            countries.append(resort.country)
+        }
+        return Array(Set(countries)).sorted()
+    }
+    
+    var allSizes: [Int] {
+        var sizes = [Int]()
+        for resort in Resort.allResorts {
+            sizes.append(resort.size)
+        }
+        return Array(Set(sizes)).sorted()
+    }
+    
+    var allPrices: [Int] {
+        var prices = [Int]()
+        for resort in Resort.allResorts {
+            prices.append(resort.price)
+        }
+        return Array(Set(prices)).sorted()
+    }
+    
+    var sizeString: String {
+        switch selectedSize {
+        case 1:
+            return "Small"
+        case 2:
+            return "Average"
+        default:
+            return "Large"
+        }
+    }
+    
+    var priceString: String {
+        String(repeating: "$", count: selectedPrice)
+    }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Group {
+                    Text("Selected country: \(selectedCountry)")
+                    Text("Selected size: \(sizeString)")
+                    Text("Selected price: \(priceString)")
+                    Spacer()
+                }
+                Group {
+                    Text("Filters")
+                        .font(.headline)
+                    Text("Country")
+                    ForEach(allCountries) { country in
+                        Button(action: {
+                            selectedCountry = country
+                            print(country)
+                        }) {
+                            Text(country)
+                        }
+                    }
+                    Text("Size")
+                    ForEach(allSizes, id: \.self) { size in
+                        Button(action: {
+                            selectedSize = size
+                            print(size)
+                        }) {
+                            Text(String(size))
+                        }
+                    }
+                    Text("Price")
+                    ForEach(allPrices, id: \.self) { price in
+                        Button(action: {
+                            selectedPrice = price
+                            print(price)
+                        }) {
+                            Text(String(price))
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
 }
 
 struct OptionsView_Previews: PreviewProvider {
-//    @State static var selectedCountry = "France"
-//    @State static var selectedSize = 1
-//    @State static var selectedPrice = 1
 
     static var previews: some View {
         OptionsView(selectedCountry: .constant("France"), selectedSize: .constant(1), selectedPrice: .constant(1))
