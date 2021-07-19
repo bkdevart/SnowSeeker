@@ -17,43 +17,37 @@ struct ContentView: View {
     @State private var selectedSize = 3
     @State private var selectedPrice = 2
     @State private var showingOptions = false
+    @State private var sortMethod: SortType = .standard
     
-    let filter: FilterType
     
-    enum FilterType {
-        case country, size, price
-    }
     
     var filteredResorts: [Resort] {
-        switch filter {
-        case .country:
-            if sortName {
-                return resorts.sorted()
-            } else {
+        switch sortMethod {
+        case .standard:
+            return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                return lhs.id > rhs.id
+            }.filter {
+                $0.country == selectedCountry &&
+                $0.size == selectedSize &&
+                $0.price == selectedPrice
+            }
+
+        case .alphabetical:
                 return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                    return lhs.id > rhs.id
+                    return lhs.name > rhs.name
                 }.filter {
                     $0.country == selectedCountry &&
                     $0.size == selectedSize &&
                     $0.price == selectedPrice
                 }
-            }
-        case .size:
-            if sortName {
-//                return resorts.sorted().filter { $0.isContacted }
-                return resorts.sorted()
-            } else {
-                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                    return lhs.id > rhs.id
-                }.filter { $0.size == selectedSize }
-            }
-        case .price:
-            if sortName {
-                return resorts.sorted()
-            } else {
-                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                    return lhs.id > rhs.id
-                }.filter { $0.price == selectedPrice }
+
+        case .country:
+            return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                return lhs.country > rhs.country
+            }.filter {
+                $0.country == selectedCountry &&
+                $0.size == selectedSize &&
+                $0.price == selectedPrice
             }
         }
     }
@@ -95,13 +89,12 @@ struct ContentView: View {
                 Text("View Options")
             })
             .sheet(isPresented: $showingOptions) {
-                OptionsView(selectedCountry: $selectedCountry, selectedSize: $selectedSize, selectedPrice: $selectedPrice)
+                OptionsView(selectedCountry: $selectedCountry, selectedSize: $selectedSize, selectedPrice: $selectedPrice, sortMethod: $sortMethod)
             }
             
             WelcomeView()
         }
         .environmentObject(favorites)
-//        .phoneOnlyStackNavigationView()  // optional way of overriding default display behavior in phones
     }
 }
 
@@ -117,6 +110,6 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(filter: .country)
+        ContentView()
     }
 }

@@ -15,6 +15,7 @@ struct OptionsView: View {
     @Binding var selectedCountry: String
     @Binding var selectedSize: Int
     @Binding var selectedPrice: Int
+    @Binding var sortMethod: SortType
     
     @State var selectedFilter: FilterType = .country
     enum FilterType {
@@ -65,10 +66,22 @@ struct OptionsView: View {
         NavigationView {
             VStack {
                 Group {
-                    Text("Selected country: \(selectedCountry)")
-                    Text("Selected size: \(sizeString)")
-                    Text("Selected price: \(priceString)")
+                    Text("Filter selections")
+                        .font(.headline)
+                    Text("Country: \(selectedCountry)")
+                    Text("Size: \(sizeString)")
+                    Text("Price: \(priceString)")
                     Spacer()
+                }
+                Group {
+                    Text("Sort selection")
+                        .font(.headline)
+                    Picker("Sort selection", selection: $sortMethod) {
+                        ForEach(SortType.allCases, id: \.self) { sortValue in
+                            Text(sortValue.rawValue.capitalized)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
                 Group {
                     Text("Filters")
@@ -111,6 +124,9 @@ struct OptionsView: View {
 struct OptionsView_Previews: PreviewProvider {
 
     static var previews: some View {
-        OptionsView(selectedCountry: .constant("France"), selectedSize: .constant(1), selectedPrice: .constant(1))
+        OptionsView(selectedCountry: .constant("France"),
+                    selectedSize: .constant(1),
+                    selectedPrice: .constant(1),
+                    sortMethod: .constant(.alphabetical))
     }
 }
