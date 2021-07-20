@@ -18,36 +18,55 @@ struct ContentView: View {
     @State private var selectedPrice = 2
     @State private var showingOptions = false
     @State private var sortMethod: SortType = .standard
+    @State private var noFilter = true
     
     
     
     var filteredResorts: [Resort] {
         switch sortMethod {
         case .standard:
-            return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                return lhs.id > rhs.id
-            }.filter {
-                $0.country == selectedCountry &&
-                $0.size == selectedSize &&
-                $0.price == selectedPrice
+            if noFilter {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.id > rhs.id
+                }
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.id > rhs.id
+                }.filter {
+                    $0.country == selectedCountry &&
+                        $0.size == selectedSize &&
+                        $0.price == selectedPrice
+                }
             }
 
         case .alphabetical:
+            if noFilter {
                 return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                    return lhs.name > rhs.name
+                    return lhs.name < rhs.name
+                }
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.name < rhs.name
                 }.filter {
                     $0.country == selectedCountry &&
-                    $0.size == selectedSize &&
-                    $0.price == selectedPrice
+                        $0.size == selectedSize &&
+                        $0.price == selectedPrice
                 }
+            }
 
         case .country:
-            return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
-                return lhs.country > rhs.country
-            }.filter {
-                $0.country == selectedCountry &&
-                $0.size == selectedSize &&
-                $0.price == selectedPrice
+            if noFilter {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.country < rhs.country
+                }
+            } else {
+                return resorts.sorted { (lhs: Resort, rhs: Resort) -> Bool in
+                    return lhs.country < rhs.country
+                }.filter {
+                    $0.country == selectedCountry &&
+                        $0.size == selectedSize &&
+                        $0.price == selectedPrice
+                }
             }
         }
     }
@@ -89,7 +108,7 @@ struct ContentView: View {
                 Text("View Options")
             })
             .sheet(isPresented: $showingOptions) {
-                OptionsView(selectedCountry: $selectedCountry, selectedSize: $selectedSize, selectedPrice: $selectedPrice, sortMethod: $sortMethod)
+                OptionsView(selectedCountry: $selectedCountry, selectedSize: $selectedSize, selectedPrice: $selectedPrice, sortMethod: $sortMethod, noFilter: $noFilter)
             }
             
             WelcomeView()

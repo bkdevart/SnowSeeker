@@ -16,6 +16,7 @@ struct OptionsView: View {
     @Binding var selectedSize: Int
     @Binding var selectedPrice: Int
     @Binding var sortMethod: SortType
+    @Binding var noFilter: Bool
     
     @State var selectedFilter: FilterType = .country
     enum FilterType {
@@ -66,14 +67,6 @@ struct OptionsView: View {
         NavigationView {
             VStack {
                 Group {
-                    Text("Filter selections")
-                        .font(.headline)
-                    Text("Country: \(selectedCountry)")
-                    Text("Size: \(sizeString)")
-                    Text("Price: \(priceString)")
-                    Spacer()
-                }
-                Group {
                     Text("Sort selection")
                         .font(.headline)
                     Picker("Sort selection", selection: $sortMethod) {
@@ -82,7 +75,23 @@ struct OptionsView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    Spacer()
                 }
+                
+                Group {
+                    Text("Filter selections")
+                        .font(.headline)
+                    Text("Country: \(selectedCountry)")
+                    Text("Size: \(sizeString)")
+                    Text("Price: \(priceString)")
+                    Button(action: {
+                        noFilter = true
+                    }) {
+                        Text("Clear Filters")
+                    }
+                    Spacer()
+                }
+                
                 Group {
                     Text("Filters")
                         .font(.headline)
@@ -90,7 +99,7 @@ struct OptionsView: View {
                     ForEach(allCountries) { country in
                         Button(action: {
                             selectedCountry = country
-                            print(country)
+                            noFilter = false
                         }) {
                             Text(country)
                         }
@@ -99,7 +108,7 @@ struct OptionsView: View {
                     ForEach(allSizes, id: \.self) { size in
                         Button(action: {
                             selectedSize = size
-                            print(size)
+                            noFilter = false
                         }) {
                             Text(String(size))
                         }
@@ -108,7 +117,7 @@ struct OptionsView: View {
                     ForEach(allPrices, id: \.self) { price in
                         Button(action: {
                             selectedPrice = price
-                            print(price)
+                            noFilter = false
                         }) {
                             Text(String(price))
                         }
@@ -127,6 +136,7 @@ struct OptionsView_Previews: PreviewProvider {
         OptionsView(selectedCountry: .constant("France"),
                     selectedSize: .constant(1),
                     selectedPrice: .constant(1),
-                    sortMethod: .constant(.alphabetical))
+                    sortMethod: .constant(.alphabetical),
+                    noFilter: .constant(true))
     }
 }
